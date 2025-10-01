@@ -1,0 +1,283 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+function Home() {
+  return <h2>Trang chủ</h2>;
+}
+
+function About() {
+  return <h2>Giới thiệu</h2>;
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/about">About</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+import { useParams } from "react-router-dom";
+
+function Product() {
+  const { id } = useParams();
+  return <h2>Chi tiết sản phẩm ID: {id}</h2>;
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/product/:id" element={<Product />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+
+
+
+
+import { useNavigate } from "react-router-dom";
+
+function Login() {
+  const navigate = useNavigate();
+
+  function handleLogin() {
+    // Giả sử login thành công
+    navigate("/dashboard");
+  }
+
+  return <button onClick={handleLogin}>Đăng nhập</button>;
+}
+
+
+
+
+
+
+import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+
+function Dashboard() {
+  return (
+    <div>
+      <h2>Dashboard</h2>
+      <nav>
+        <Link to="profile">Profile</Link> |{" "}
+        <Link to="settings">Settings</Link>
+      </nav>
+      <Outlet /> {/* Route con sẽ render ở đây */}
+    </div>
+  );
+}
+
+function Profile() {
+  return <h3>Trang cá nhân</h3>;
+}
+function Settings() {
+  return <h3>Cài đặt</h3>;
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+
+
+
+
+
+import React from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+
+function Home() {
+  return <h2>🏠 Home Page</h2>;
+}
+
+function About() {
+  return <h2>ℹ️ About Page</h2>;
+}
+
+function Contact() {
+  return <h2>📞 Contact Page</h2>;
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <nav style={{ marginBottom: "20px" }}>
+        <NavLink
+          to="/"
+          style={({ isActive }) => ({
+            margin: "0 10px",
+            fontWeight: isActive ? "bold" : "normal",
+            color: isActive ? "red" : "blue",
+          })}
+        >
+          Home
+        </NavLink>
+
+        <NavLink
+          to="/about"
+          style={({ isActive }) => ({
+            margin: "0 10px",
+            fontWeight: isActive ? "bold" : "normal",
+            color: isActive ? "red" : "blue",
+          })}
+        >
+          About
+        </NavLink>
+
+        <NavLink
+          to="/contact"
+          style={({ isActive }) => ({
+            margin: "0 10px",
+            fontWeight: isActive ? "bold" : "normal",
+            color: isActive ? "red" : "blue",
+          })}
+        >
+          Contact
+        </NavLink>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+
+
+
+
+
+
+import React from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation
+} from "react-router-dom";
+
+function ShowLocation() {
+  const location = useLocation();
+
+  return (
+    <div>
+      <h2>📍 useLocation Example</h2>
+      <p>Pathname: {location.pathname}</p>
+      <p>Search: {location.search}</p>
+      <p>Hash: {location.hash}</p>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/about?name=hao&age=21#top">About</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<h2>🏠 Home Page</h2>} />
+        <Route path="/about" element={<ShowLocation />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

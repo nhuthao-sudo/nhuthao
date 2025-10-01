@@ -261,6 +261,32 @@ console.log(canVote); // 👉 "Được bầu cử"
 
 
 
+// ==============================
+
+
+let name = "Hào", age = 21;
+
+// ES5
+let user1 = {name: name, age: age};
+
+// ES6
+let user2 = {name, age}; 
+console.log(user2); // {name: "Hào", age: 21}
+
+// ==============================
+
+
+const fetchData = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Done!"), 1000);
+});
+
+fetchData.then(data => console.log(data));
+
+
+
+// ==============================
+
+
 
 
 
