@@ -1,5 +1,12 @@
-const number = [1,2,3,4,5];
+import { useState } from "react";
 
-const doouble = number.map(n => n*2);
+function Counter() {
+    const {count, setCount} = useState(0);
 
-console.log(doouble)
+    return (
+        <div>
+            <p>ban da ban {count} lan</p>
+            <button onClick={() => setCount(count + 1)}>tang</button>
+        </div>
+    );
+}
